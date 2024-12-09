@@ -27,3 +27,8 @@ jobs:
       - name: Publish Encrypted URL and MAC to MQTT Topic
         run: |
           mosquitto_pub -h test.mosquitto.org -t "inTopic" -m "$URL"
+
+      - name: Publish Timestamp to MQTT Topic
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          mosquitto_pub -h test.mosquitto.org -t "timestamp" -m "$TIMESTAMP"
