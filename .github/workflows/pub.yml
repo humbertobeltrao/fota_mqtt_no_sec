@@ -8,7 +8,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest # Ubuntu machine for CI 
-
+    
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
 
       - name: Publish Timestamp to MQTT Topic
         run: |
-          TIMESTAMP=$(date +%s%3N)
+          TIMESTAMP=$(TZ="UTC+3" date +"%Y-%m-%dT%H:%M:%S+03:00)
           echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
           mosquitto_pub -h test.mosquitto.org -t "timestamp" -m "$TIMESTAMP"
           
