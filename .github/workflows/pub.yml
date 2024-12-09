@@ -30,7 +30,7 @@ jobs:
 
       - name: Publish Timestamp to MQTT Topic
         run: |
-          TIMESTAMP=$(date)
+          TIMESTAMP=$(TZ="UTC+3" date)
           echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
           mosquitto_pub -h test.mosquitto.org -t "timestamp" -m "$TIMESTAMP"
           
