@@ -3,7 +3,7 @@ name: MQTT Publish on Commit
 on:
   push:
     branches:
-      - main  # Monitor on the 'main' branch
+      - main  # Monitor on the 'main' 
 
 jobs:
   publish:
